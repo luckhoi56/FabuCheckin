@@ -100,43 +100,11 @@
           >
             Home
           </a>
-          <a
-            href="/Staff"
-            class=" {current === 'staff'
-              ? 'border-yellow-500'
-              : ''} border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium"
-            on:click={() => (current = "staff")}
-          >
-            Staffs
-          </a>
+        
 
-          <a
-            href="/Gallary"
-            class=" {current === 'about'
-              ? 'border-yellow-500'
-              : ''} border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium"
-            on:click={() => (current = "about")}
-          >
-            Gallary
-          </a>
-          <a
-            href="/Pricing"
-            class=" {current === 'pricing'
-              ? 'border-yellow-500'
-              : ''} border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium"
-            on:click={() => (current = "pricing")}
-          >
-            Pricing
-          </a>
-          <a
-            href="/About"
-            class=" {current === 'gallary'
-              ? 'border-yellow-500'
-              : ''} border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium"
-            on:click={() => (current = "gallary")}
-          >
-            About Us
-          </a>
+          
+          
+          
         </div>
       </div>
       <div
@@ -203,26 +171,7 @@
         href="/"
         class={current === "home" ? m_highlight : m_non_highlight}>Home</a
       >
-      <a
-        on:click={() => (current = "staff")}
-        href="/Staff"
-        class={current === "staff" ? m_highlight : m_non_highlight}>Staffs</a
-      >
-      <a
-        on:click={() => (current = "gallary")}
-        href="/Gallary"
-        class={current === "gallary" ? m_highlight : m_non_highlight}>Gallary</a
-      >
-      <a
-        on:click={() => (current = "pricing")}
-        href="/Pricing"
-        class={current === "pricing" ? m_highlight : m_non_highlight}>Pricing</a
-      >
-      <a
-        on:click={() => (current = "about")}
-        href="/About"
-        class={current === "about" ? m_highlight : m_non_highlight}>About</a
-      >
+ 
     </div>
   </div>
 </nav>
