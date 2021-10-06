@@ -328,22 +328,7 @@
                   </div>
                 </div>
 
-                <div
-                  class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5"
-                >
-                  <label
-                    for="calendar"
-                    class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"
-                  >
-                    Calendars
-                  </label>
-
-                  <Datepicker
-                    bind:selected={m_chosenDate}
-                    start={minDate}
-                    end={maxDate}
-                  />
-                </div>
+               
 
                 <div
                   class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5"
@@ -369,59 +354,8 @@
                   </div>
                 </div>
 
-                <div
-                  class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5"
-                >
-                  <label
-                    for="times"
-                    class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"
-                  >
-                    Technician
-                  </label>
-                  <div class="mt-1 sm:mt-0 sm:col-span-2">
-                    <select
-                      bind:value={m_customer_appointment["technician"]}
-                      id="technician"
-                      name="technician"
-                      autocomplete="technician"
-                      class="max-w-lg block focus:ring-indigo-500 focus:border-indigo-500 w-full shadow-sm sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
-                    >
-                      <option>Katie</option>
-                      <option>Coco</option>
-                      <option>LuLu</option>
-                      <option>No Reference</option>
-                    </select>
-                  </div>
-                </div>
 
-                <div
-                  class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5"
-                >
-                  <label
-                    for="times"
-                    class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"
-                  >
-                    Time
-                  </label>
-                  <div class="mt-1 sm:mt-0 sm:col-span-2">
-                    <select
-                      bind:value={m_customer_appointment["time"]}
-                      id="time"
-                      name="time"
-                      autocomplete="time"
-                      class="max-w-lg block focus:ring-indigo-500 focus:border-indigo-500 w-full shadow-sm sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
-                    >
-                      <option>09:00AM</option>
-                      <option>10:30AM</option>
-                      <option>12:00PM</option>
-                      <option>01:30PM</option>
-                      <option>03:00PM</option>
-                      <option>04:30PM</option>
-                      <option>06:00PM</option>
-                    </select>
-                  </div>
-                </div>
-
+               
 
 
                 
