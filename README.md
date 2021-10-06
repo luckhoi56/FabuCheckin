@@ -34,3 +34,8 @@ Special thank's to [dominikg/svite](https://github.com/dominikg/svite) for the T
 - [routify-twind](https://github.com/lamualfa/routify-twind) - Use Twind (_Tailwind CSS in JS version_) in Routify.
 - [routify-carbon](https://github.com/lamualfa/routify-carbon) - Use IBM Carbon Framework in Routify.
 
+
+
+
+#red asterisk for required field
+https://www.codegrepper.com/code-examples/html/show+asterisk+on+required+field+tailwind+css

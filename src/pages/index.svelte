@@ -23,7 +23,7 @@
     email: "",
     date: m_chosenDate,
     time: "9:00AM",
-    service: "lash",
+    service: "Lash",
     technician: "Katie",
     raw_date: m_chosenDate
   };
@@ -242,8 +242,9 @@
                   class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5"
                 >
                   <label
+                  
                     for="first_name"
-                    class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"
+                    class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2 required"
                   >
                     First name
                   </label>
@@ -266,7 +267,7 @@
                 >
                   <label
                     for="last_name"
-                    class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"
+                    class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2 required"
                   >
                     Last name
                   </label>
@@ -289,7 +290,7 @@
                 >
                   <label
                     for="phoneNumber"
-                    class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"
+                    class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2 required"
                   >
                     Phone Numbers
                   </label>
@@ -337,7 +338,7 @@
                 >
                   <label
                     for="times"
-                    class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"
+                    class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2 required"
                   >
                     Service
                   </label>
@@ -607,3 +608,10 @@
     </div>
   </div>
 {/if}
+
+<style>
+  .required:after {
+    content:" *";
+    color: red;
+  }
+</style>
