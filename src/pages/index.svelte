@@ -42,7 +42,7 @@
     return await response.json()
   }
 
-  async function sendAppointment() {
+  async function sendCheckin() {
     m_customer_appointment.date = dateFormat(m_chosenDate)
     m_customer_appointment.raw_date = m_chosenDate
     if (formSanitize() == true) {
@@ -380,7 +380,7 @@
           </button>
           {:then data}
              <button
-            on:click={sendAppointment}
+            on:click={sendCheckin}
             type="button"
             class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-yellow-700 text-base font-medium text-white hover:bg-yellow-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500 sm:col-start-2 sm:text-sm"
           >
