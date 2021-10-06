@@ -232,11 +232,10 @@
             <div class="pt-8 space-y-6 sm:pt-10 sm:space-y-5">
               <div>
                 <h3 class="text-lg leading-6 font-medium text-gray-900">
-                  Booking Information
+                  Checkin Information
                 </h3>
-                <p class="mt-1 max-w-2xl text-sm text-gray-500">
-                  Booking time 30 days in advance.
-                </p>
+                <br>
+              
               </div>
               <div class="space-y-6 sm:space-y-5">
                 <div
@@ -250,6 +249,7 @@
                   </label>
                   <div class="mt-1 sm:mt-0 sm:col-span-2">
                     <input
+                      placeholder="John"
                       bind:value={m_customer_appointment["firstName"]}
                       type="text"
                       name="first_name"
@@ -272,6 +272,7 @@
                   </label>
                   <div class="mt-1 sm:mt-0 sm:col-span-2">
                     <input
+                      placeholder="Doe"
                       bind:value={m_customer_appointment["lastName"]}
                       type="text"
                       name="last_name"
@@ -295,7 +296,7 @@
                   <div class="mt-1 sm:mt-0 sm:col-span-2">
                     <input
                       type="tel"
-                      placeholder="909-319-1234"
+                      placeholder="9093191234"
                       bind:value={m_customer_appointment["phoneNumbers"]}
                       id="phone"
                       name="phome"
@@ -318,6 +319,7 @@
                   <div class="mt-1 sm:mt-0 sm:col-span-2">
                     <input
                       bind:value={m_customer_appointment["email"]}
+                      placeholder="example@gmail.com"
                       id="email"
                       name="email"
                       type="email"
