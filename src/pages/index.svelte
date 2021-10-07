@@ -236,54 +236,8 @@
                 </h3>
                 <br>
               
-              </div>
-              <div class="space-y-6 sm:space-y-5">
-                <div
-                  class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5"
-                >
-                  <label
-                  
-                    for="first_name"
-                    class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2 required"
-                  >
-                    First name
-                  </label>
-                  <div class="mt-1 sm:mt-0 sm:col-span-2">
-                    <input
-                      placeholder="John"
-                      bind:value={m_customer_appointment["firstName"]}
-                      type="text"
-                      name="first_name"
-                      id="first_name"
-                      autocomplete="given-name"
-                      class="max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
-                      required
-                    />
-                  </div>
-                </div>
+             
 
-                <div
-                  class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5"
-                >
-                  <label
-                    for="last_name"
-                    class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2 required"
-                  >
-                    Last name
-                  </label>
-                  <div class="mt-1 sm:mt-0 sm:col-span-2">
-                    <input
-                      placeholder="Doe"
-                      bind:value={m_customer_appointment["lastName"]}
-                      type="text"
-                      name="last_name"
-                      id="last_name"
-                      autocomplete="family-name"
-                      class="max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
-                      required
-                    />
-                  </div>
-                </div>
 
                 <div
                   class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5"
@@ -308,54 +262,11 @@
                   </div>
                 </div>
 
-                <div
-                  class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5"
-                >
-                  <label
-                    for="email"
-                    class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"
-                  >
-                    Email address
-                  </label>
-                  <div class="mt-1 sm:mt-0 sm:col-span-2">
-                    <input
-                      bind:value={m_customer_appointment["email"]}
-                      placeholder="example@gmail.com"
-                      id="email"
-                      name="email"
-                      type="email"
-                      autocomplete="email"
-                      class="block max-w-lg w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm border-gray-300 rounded-md"
-                      
-                    />
-                  </div>
-                </div>
+                
 
                
 
-                <div
-                  class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5"
-                >
-                  <label
-                    for="times"
-                    class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2 required"
-                  >
-                    Service
-                  </label>
-                  <div class="mt-1 sm:mt-0 sm:col-span-2">
-                    <select
-                      bind:value={m_customer_appointment["service"]}
-                      id="service"
-                      name="service"
-                      autocomplete="service"
-                      class="max-w-lg block focus:ring-indigo-500 focus:border-indigo-500 w-full shadow-sm sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
-                    >
-                      <option>Lash</option>
-                      <option>Microblading</option>
-                      <option>Body Sculpting</option>
-                    </select>
-                  </div>
-                </div>
+               
 
 
                
