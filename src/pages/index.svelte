@@ -47,7 +47,7 @@
     m_customer_appointment.date = dateFormat(m_chosenDate)
     m_customer_appointment.raw_date = m_chosenDate
     if (formSanitize() == true) {
-      //m_confirmation_modal = true;
+      m_confirmation_modal = true;
     } else {
       m_message_error_modal = true;
     }
