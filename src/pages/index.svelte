@@ -72,12 +72,32 @@
       customer = result
       console.log(typeof(customer.firstName))
     }
-    
-
-    
-   
   }
 
+  async function sendCheckinUpdate() {
+    
+   
+    const res = await fetch("http://localhost:4242/send-checkin-update", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(m_customer_appointment),
+    });
+
+    const json = await res.json();
+    let result = json
+    console.log(result)
+    if(result == 'not found')
+    {
+      m_customer_not_found = true
+    }
+    else{
+      m_customer_found = true
+      customer = result
+      console.log(m_customer_found)
+    }
+  }
   function formSanitize() {
     if(/^(1\s|1|)?((\(\d{3}\))|\d{3})(\-|\s)?(\d{3})(\-|\s)?(\d{4})$/.test(m_customer_appointment["phoneNumbers"]) == false ){
       m_message_error = "not a valid phone number"
@@ -782,11 +802,11 @@
           </button>
           {:then data}
              <button
-            on:click={sendCheckin}
+            on:click={sendCheckinUpdate}
             type="button"
             class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-yellow-700 text-base font-medium text-white hover:bg-yellow-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500 sm:col-start-2 sm:text-sm"
           >
-            Confirm
+            Confirm 2
           </button>
           {:catch error}
              <button
@@ -805,7 +825,7 @@
             type="button"
             class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500 sm:mt-0 sm:col-start-1 sm:text-sm"
           >
-            Cancel Check In Information Update
+            Cancel
           </button>
         </div>
       </div>
