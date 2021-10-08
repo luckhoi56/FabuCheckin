@@ -46,10 +46,9 @@
   async function sendCheckin() {
     m_customer_appointment.date = dateFormat(m_chosenDate)
     m_customer_appointment.raw_date = m_chosenDate
-    if (formSanitize() == true) {
-      m_confirmation_modal = true;
-    } else {
+    if(formSanitizePhone()==false){
       m_message_error_modal = true;
+      return
     }
    
     const res = await fetch("http://localhost:4242/send-checkin", {
@@ -75,7 +74,10 @@
   }
 
   async function sendCheckinUpdate() {
-    
+    if(formSanitizeName()==false){
+      m_message_error_modal = true;
+      return
+    }
     
     const res = await fetch("http://localhost:4242/send-checkin-update", {
       method: "POST",
@@ -86,11 +88,23 @@
     });
 
     const json = await res.json();
-    
+    m_customer_update = false
   }
-  function formSanitize() {
+  function formSanitizePhone() {
     if(/^(1\s|1|)?((\(\d{3}\))|\d{3})(\-|\s)?(\d{3})(\-|\s)?(\d{4})$/.test(m_customer_appointment["phoneNumbers"]) == false ){
       m_message_error = "not a valid phone number"
+      return false
+    }
+    return true
+  }
+  function formSanitizeName() {
+    
+    if(m_customer_appointment['firstName'] == ''){
+      m_message_error = "first name is invalid"
+      return false
+    }
+    if(m_customer_appointment['lastName'] == ''){
+      m_message_error = "last name is invalid"
       return false
     }
       
@@ -272,7 +286,7 @@
                       id="phone"
                       name="phome"
                       autocomplete="phone"
-                      class="block max-w-lg w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm border-gray-300 rounded-md"
+                      class="  block max-w-lg w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm border-gray-300 rounded-md"
                       required
                     />
                   </div>
@@ -725,7 +739,7 @@
                   >
                     <label
                       for="first_name"
-                      class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"
+                      class="required block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"
                     >
                       First name
                     </label>
@@ -736,7 +750,7 @@
                         name="first_name"
                         id="first_name"
                         autocomplete="given-name"
-                        class="max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
+                        class=" max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
                         required
                       />
                     </div>
@@ -747,7 +761,7 @@
                   >
                     <label
                       for="last_name"
-                      class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"
+                      class="required block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"
                     >
                       Last name
                     </label>
@@ -785,7 +799,7 @@
              <button
             on:click={()=>{
               sendCheckinUpdate()
-              m_modal = m_customer_update = m_customer_found =false;
+              
             }}
             type="button"
             class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-yellow-700 text-base font-medium text-white hover:bg-yellow-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500 sm:col-start-2 sm:text-sm"
