@@ -92,7 +92,10 @@
       m_message_error_modal = true;
       return false
     }
-    
+    let s =spacetime.now('America/Los_Angeles')
+    m_customer_appointment.raw_date = s
+    m_customer_appointment.date = `${s.date()}-${s.monthName()}-${s.year()}`
+    m_customer_appointment.time = `${s.time()}`
     console.log('cool')
     const res = await fetch("http://localhost:4242/update-customer", {
       method: "POST",
