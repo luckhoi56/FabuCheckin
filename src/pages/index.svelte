@@ -16,6 +16,18 @@
   let m_message_error = "";
   let m_message_error_modal = false;
   let m_customer_update = false
+  let m_blank_customer_appoinment = {
+    firstName: "",
+    lastName: "",
+    phoneNumbers: "",
+    email: "",
+    date: m_chosenDate,
+    time: "",
+    service: "",
+    technician: "",
+    raw_date: "",
+    type:'checkin'
+  };
   let m_customer_appointment = {
     firstName: "",
     lastName: "",
@@ -93,7 +105,7 @@
     m_confirmation_modal=true
     m_customer_update = m_customer_found = m_customer_not_found=false
     const json = await res.json();
-    
+    m_customer_appointment = {...m_blank_customer_appoinment}
     
     
   }
@@ -348,6 +360,7 @@
             on:click={() => {
               m_customer_found = m_customer_not_found=  false
               m_modal = false;
+              m_customer_appointment = {...m_blank_customer_appoinment}
             }}
             type="button"
             class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500 sm:mt-0 sm:col-start-1 sm:text-sm"
@@ -471,7 +484,7 @@
               },
               body: JSON.stringify(m_customer_appointment),
             });
-
+            m_customer_appointment ={...m_blank_customer_appoinment}
           }}
           type="button" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
             Check In 
@@ -647,11 +660,12 @@
             on:click={() => {
               m_modal = m_customer_update = m_customer_found = m_customer_not_found=false;
               console.log(m_customer_update)
+              m_customer_appointment = {...m_blank_customer_appoinment}
             }}
             type="button"
             class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500 sm:mt-0 sm:col-start-1 sm:text-sm"
           >
-            Cancel
+            Cancel 2
           </button>
         </div>
       </div>
