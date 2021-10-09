@@ -1,7 +1,6 @@
 <script>
   import { fade } from "svelte/transition";
-  import {onMount} from 'svelte'
-  import Datepicker from "../Components/Datepicker.svelte";
+  import spacetime from 'spacetime'
   //const oneYear = 1000 * 60 * 60 * 24 * 365; //
   
   let m_customer_found = false;
@@ -23,10 +22,11 @@
     phoneNumbers: "",
     email: "",
     date: m_chosenDate,
-    time: "9:00AM",
-    service: "Lash",
-    technician: "Katie",
-    raw_date: m_chosenDate
+    time: "",
+    service: "",
+    technician: "",
+    raw_date: "",
+    type:'checkin'
   };
   let m_confirmation_modal = false;
   function dateFormat(dateObject){
@@ -44,14 +44,12 @@
   }
 
   async function sendCheckin() {
-    m_customer_appointment.date = dateFormat(m_chosenDate)
-    m_customer_appointment.raw_date = m_chosenDate
     if(formSanitizePhone()==false){
       m_message_error_modal = true;
       return
     }
    
-    const res = await fetch("http://localhost:4242/send-checkin", {
+    const res = await fetch("http://localhost:4242/find-customer", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -61,14 +59,17 @@
 
     const json = await res.json();
     let result = json
-    
+    console.log(result)
     if(result == 'not found')
     {
       m_customer_not_found = true
     }
     else{
+      m_modal = false
       m_customer_found = true
       customer = result
+      m_customer_appointment.firstName = result.firstName
+      m_customer_appointment.lastName = result.lastName
       console.log(typeof(customer.firstName))
     }
   }
@@ -81,7 +82,7 @@
     }
     
     console.log('cool')
-    const res = await fetch("http://localhost:4242/send-checkin-update", {
+    const res = await fetch("http://localhost:4242/update-customer", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -89,9 +90,10 @@
       body: JSON.stringify(m_customer_appointment),
     });
     
-    const json = await res.json();
     m_confirmation_modal=true
-    m_customer_update = m_customer_found= false
+    m_customer_update = m_customer_found = m_customer_not_found=false
+    const json = await res.json();
+    
     
     
   }
@@ -330,7 +332,7 @@
             type="button"
             class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-yellow-700 text-base font-medium text-white hover:bg-yellow-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500 sm:col-start-2 sm:text-sm"
           >
-            Confirm
+            Confirm 1
           </button>
           {:catch error}
              <button
@@ -344,12 +346,13 @@
          
           <button
             on:click={() => {
+              m_customer_found = m_customer_not_found=  false
               m_modal = false;
             }}
             type="button"
             class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500 sm:mt-0 sm:col-start-1 sm:text-sm"
           >
-            Cancel
+            Cancel 1
           </button>
         </div>
       </div>
@@ -357,9 +360,7 @@
   </div>
 {/if}
 
-
-
-{#if m_customer_found == true}
+{#if (m_customer_found == true)}
   <!-- This example requires Tailwind CSS v2.0+ -->
   <div
     transition:fade
@@ -455,7 +456,24 @@
 
           
 
-          <button type="button" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+          <button 
+          on:click = {async () =>{
+            m_confirmation_modal = true
+            m_customer_update = m_customer_found= false
+            let s =spacetime.now('America/Los_Angeles')
+            m_customer_appointment.raw_date = s
+            m_customer_appointment.date = `${s.date()}-${s.monthName()}-${s.year()}`
+            m_customer_appointment.time = `${s.time()}`
+            const res = await fetch("http://localhost:4242/update-customer", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify(m_customer_appointment),
+            });
+
+          }}
+          type="button" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
             Check In 
           </button>
         </div>
@@ -467,7 +485,9 @@
 
 
 
-{#if m_customer_update === true}
+
+
+{#if (m_customer_update === true ||  m_customer_not_found == true)}
   <!-- Modal -->
   <div
     transition:fade
@@ -625,7 +645,7 @@
          
           <button
             on:click={() => {
-              m_modal = m_customer_update = m_customer_found =false;
+              m_modal = m_customer_update = m_customer_found = m_customer_not_found=false;
               console.log(m_customer_update)
             }}
             type="button"

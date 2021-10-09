@@ -71,6 +71,7 @@
   },
   "dependencies": {
     "dayjs": "^1.10.4",
+    "spacetime": "^6.16.3",
     "svelte-calendar": "^2.0.4"
   }
 }
