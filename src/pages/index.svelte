@@ -25,7 +25,6 @@
     time: "",
     service: "",
     technician: "",
-    raw_date: "",
     type:'checkin'
   };
   let m_customer_appointment = {
@@ -37,7 +36,6 @@
     time: "",
     service: "",
     technician: "",
-    raw_date: "",
     type:'checkin'
   };
   let m_confirmation_modal = false;
@@ -93,7 +91,6 @@
       return false
     }
     let s =spacetime.now('America/Los_Angeles')
-    m_customer_appointment.raw_date = s
     m_customer_appointment.date = `${s.date()}-${s.monthName()}-${s.year()}`
     m_customer_appointment.time = `${s.time()}`
     console.log('cool')
@@ -477,7 +474,6 @@
             m_confirmation_modal = true
             m_customer_update = m_customer_found= false
             let s =spacetime.now('America/Los_Angeles')
-            m_customer_appointment.raw_date = s
             m_customer_appointment.date = `${s.month()+1}/${s.date()}/${s.year()}`
             m_customer_appointment.time = `${s.time()}`
             const res = await fetch("https://burin-eyelash.herokuapp.com/update-customer", {
