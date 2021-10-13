@@ -61,7 +61,7 @@
       return
     }
    
-    const res = await fetch("http://localhost:4242/find-customer", {
+    const res = await fetch("https://burin-eyelash.herokuapp.com/find-customer", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -97,7 +97,7 @@
     m_customer_appointment.date = `${s.date()}-${s.monthName()}-${s.year()}`
     m_customer_appointment.time = `${s.time()}`
     console.log('cool')
-    const res = await fetch("http://localhost:4242/update-customer", {
+    const res = await fetch("https://burin-eyelash.herokuapp.com/update-customer", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
