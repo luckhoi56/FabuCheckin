@@ -643,7 +643,7 @@
             type="button"
             class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-yellow-700 text-base font-medium text-white hover:bg-yellow-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500 sm:col-start-2 sm:text-sm"
           >
-            Confirm 2
+            Confirm
           </button>
           {:catch error}
              <button
@@ -664,7 +664,7 @@
             type="button"
             class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500 sm:mt-0 sm:col-start-1 sm:text-sm"
           >
-            Cancel 2
+            Cancel
           </button>
         </div>
       </div>
@@ -845,11 +845,11 @@
               class="text-lg leading-6 font-medium text-gray-900"
               id="modal-title"
             >
-              Checkin successful
+              Check In Successfully!
             </h3>
             <div class="mt-2">
               <p class="text-sm text-gray-500">
-                A confirmation message will be sent
+                Have a seat
               </p>
             </div>
           </div>
