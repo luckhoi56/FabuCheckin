@@ -480,7 +480,7 @@
             m_customer_appointment.raw_date = s
             m_customer_appointment.date = `${s.date()}-${s.monthName()}-${s.year()}`
             m_customer_appointment.time = `${s.time()}`
-            const res = await fetch("http://localhost:4242/update-customer", {
+            const res = await fetch("https://burin-eyelash.herokuapp.com/update-customer", {
               method: "POST",
               headers: {
                 "Content-Type": "application/json",
