@@ -25,7 +25,8 @@
     time: "",
     service: "",
     technician: "",
-    type:'checkin'
+    type:'checkin',
+    status:'n/a'
   };
   let m_customer_appointment = {
     firstName: "",
@@ -36,7 +37,8 @@
     time: "",
     service: "",
     technician: "",
-    type:'checkin'
+    type:'checkin',
+    status:'n/a'
   };
   let m_confirmation_modal = false;
   function dateFormat(dateObject){
